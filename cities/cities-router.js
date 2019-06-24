@@ -52,6 +52,17 @@ router.get('/:id/restaurants', (req, res) => { // object containing city with as
 
 });
 
+router.get('/restaurants/:id', (req, res) => {
+    const id = req.params.id
+    Cities.getRestaurantById(id)
+        .then(restaurant => {
+            res.status(200).json(restaurant)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+});
+
 //get individual restaurant here !!!!!!!!!!! just use restaurant id, no need for city id
 
 // last endpoint /restaurants/:id - pulls using primary key for restaurants
