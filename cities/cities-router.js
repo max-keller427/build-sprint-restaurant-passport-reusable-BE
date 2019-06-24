@@ -15,6 +15,8 @@ const Cities = require('./cities-model');
     }
 }); */
 
+// !!!!!!!********!*!*!*!*!*!*!*! still have to add restrict middleware to routes!!!!!!
+
 router.get('/', (req, res) => { // pull from cities table - get a list of cities 
     Cities.getCities()
         .then(cities => {
@@ -35,14 +37,26 @@ router.post('/', (req, res) => { // posts to cities
         })
 })
 
+router.post('/restaurants', (req, res) => { // posts to restaurants
+    Cities.addRestaurant(req.body)
+        .then(ids => {
+            res.status(200).json(ids)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
+
 
 
 router.get('/:id/restaurants', (req, res) => { // object containing city with associated restaurants
     const { id } = req.params;
-    Cities.getCityBy(id)
+    Cities.getCityById(id)
         .then(city => {
+            console.log('city', city)
             Cities.getRestaurants(city.id)
-                .then(actions => {
+                .then(restaurants => {
+                    console.log(restaurants)
                     res.status(200).json({ 'id': city.id, "name": city.name, "restaurants": restaurants })
                 })
                 .catch(error => {
@@ -50,6 +64,17 @@ router.get('/:id/restaurants', (req, res) => { // object containing city with as
                 })
         })
 
+});
+
+router.get('/restaurants/:id', (req, res) => {
+    const id = req.params.id
+    Cities.getRestaurantById(id)
+        .then(restaurant => {
+            res.status(200).json(restaurant)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
 });
 
 //get individual restaurant here !!!!!!!!!!! just use restaurant id, no need for city id

@@ -8,11 +8,17 @@ module.exports = {
     getCityById,
     getRestaurants,
     getRestaurantById,
+    addRestaurant
 }
 
 function addCity(city) {
     return db('cities')
         .insert(city, 'id')
+}
+
+function addRestaurant(restaurant) {
+    return db('restaurants')
+        .insert(restaurant, 'id')
 }
 
 function getCities() {
@@ -22,13 +28,13 @@ function getCities() {
 function getCityById(id) {
     return db('cities')
         .first()
-        .where('city.id', id)
+        .where('cities.id', id)
 }
 
 function getRestaurants(id) { // gets by city id
     return db('restaurants')
-        .join('cities', 'city.id', 'restaurants.city_id') // this is a post not a get
-        .select('restaurants.id', 'restaurants.name as name')
+        .join('cities', 'cities.id', 'restaurants.city_id')
+        .select('restaurants.id as restID', 'restaurants.name as restName')
         .where('restaurants.city_id', id)
 }
 
