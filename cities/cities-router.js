@@ -37,14 +37,26 @@ router.post('/', (req, res) => { // posts to cities
         })
 })
 
+router.post('/restaurants', (req, res) => { // posts to restaurants
+    Cities.addRestaurant(req.body)
+        .then(ids => {
+            res.status(200).json(ids)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
+
 
 
 router.get('/:id/restaurants', (req, res) => { // object containing city with associated restaurants
     const { id } = req.params;
-    Cities.getCityBy(id)
+    Cities.getCityById(id)
         .then(city => {
+            console.log('city', city)
             Cities.getRestaurants(city.id)
-                .then(actions => {
+                .then(restaurants => {
+                    console.log(restaurants)
                     res.status(200).json({ 'id': city.id, "name": city.name, "restaurants": restaurants })
                 })
                 .catch(error => {
