@@ -15,6 +15,8 @@ const Cities = require('./cities-model');
     }
 }); */
 
+// !!!!!!!********!*!*!*!*!*!*!*! still have to add restrict middleware to routes!!!!!!
+
 router.get('/', (req, res) => { // pull from cities table - get a list of cities 
     Cities.getCities()
         .then(cities => {
