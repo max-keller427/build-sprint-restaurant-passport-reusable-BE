@@ -1,0 +1,29 @@
+{
+  "name": "rp_backend_Jared-Parrish",
+  "version": "1.0.0",
+  "description": "Back-end for Restaurant-Passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/restaurantpassport/rp_backend_Jared-Parrish.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/restaurantpassport/rp_backend_Jared-Parrish/issues"
+  },
+  "homepage": "https://github.com/restaurantpassport/rp_backend_Jared-Parrish#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.17.6",
+    "sqlite3": "^4.0.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
