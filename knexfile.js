@@ -26,11 +26,11 @@ module.exports = {
     migrations: {
       directory: './data/migrations'
     },
-    pool: {
+    /* pool: {
       afterCreate: (conn, done) => {
         conn.run('PRAGMA foreign_keys = ON', done);
       },
-    },
+    }, */
 
   }
 
