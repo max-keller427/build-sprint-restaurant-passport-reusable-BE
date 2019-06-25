@@ -15,7 +15,7 @@ module.exports = {
     },
     pool: {
       afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done);
+        conn.run('PRAGMA foreign_keys = ON', done); //this may be an issue with heroku
       },
     },
   },
