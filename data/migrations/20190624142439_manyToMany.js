@@ -4,10 +4,10 @@ exports.up = function (knex, Promise) {
         manyToMany.increments()
 
         manyToMany
-            .integer('city_id')
+            .integer('user_id')
             .unsigned()
             .references('id')
-            .inTable('cities')
+            .inTable('users')
             .onDelete('RESTRICT')
             .onUpdate('CASCADE')
 

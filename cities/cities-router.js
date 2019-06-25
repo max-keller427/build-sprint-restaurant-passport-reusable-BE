@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Cities = require('./cities-model');
+const { authenticate } = require('../users/restrict-middleware')
 
 /* router.post('/', (req, res) => {
     if (req.body.username && req.body.password && req.body.email) {
@@ -17,7 +18,7 @@ const Cities = require('./cities-model');
 
 // !!!!!!!********!*!*!*!*!*!*!*! still have to add restrict middleware to routes!!!!!!
 
-router.get('/', (req, res) => { // pull from cities table - get a list of cities 
+router.get('/', authenticate, (req, res) => { // pull from cities table - get a list of cities 
     Cities.getCities()
         .then(cities => {
             res.status(200).json(cities)
@@ -49,7 +50,7 @@ router.post('/restaurants', (req, res) => { // posts to restaurants
 
 
 
-router.get('/:id/restaurants', (req, res) => { // object containing city with associated restaurants
+router.get('/:id/restaurants', authenticate, (req, res) => { // object containing city with associated restaurants
     const { id } = req.params;
     Cities.getCityById(id)
         .then(city => {
@@ -66,7 +67,7 @@ router.get('/:id/restaurants', (req, res) => { // object containing city with as
 
 });
 
-router.get('/restaurants/:id', (req, res) => {
+router.get('/restaurants/:id', authenticate, (req, res) => {
     const id = req.params.id
     Cities.getRestaurantById(id)
         .then(restaurant => {
