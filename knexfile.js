@@ -18,6 +18,9 @@ module.exports = {
     migrations: {
       directory: './data/migrations',
     },
+    seeds: {
+      directory: './data/seeds'
+    }
   },
 
   /* testing: {
@@ -40,5 +43,8 @@ module.exports = {
     migrations: {
       directory: './data/migrations',
     },
+    seeds: {
+      directory: './data/seeds'
+    }
   },
 };
