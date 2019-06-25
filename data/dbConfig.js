@@ -1,6 +1,6 @@
 const knex = require('knex');
 const config = require('../knexfile')
 
-const environment = process.env.DB_ENV || 'development'
+const environment = 'production'
 
 mondule.exports = knex(config[environment])
