@@ -5,11 +5,13 @@ const db = knex(knexConfig.development);
 module.exports = {
     findById,
     findBy,
-    addUser
+    addUser,
+    getUsers
 }
 
-function findBy(parameter) {
-    return db('users').where(parameter);
+function findBy(username) {
+    console.log(username)
+    return db('users').where(username);
 }
 
 function findById(id) {
@@ -24,5 +26,9 @@ function addUser(user) {
             const [id] = ids;
             return findById(id)
         });
+}
+
+function getUsers() {
+    return db('users')
 }
 //see zoos db project - will need a table to store lists of restaurants that all users have been to. You need a foreign key to point to user id from users table, and foreign key to point to restaurant id from restaurants table (we need a many to many restaurnts) OR try out postress
