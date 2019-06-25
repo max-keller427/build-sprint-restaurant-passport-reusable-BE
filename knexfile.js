@@ -4,7 +4,7 @@ const productionDbConnection = process.env.DATABASE_URL;
 
 module.exports = {
 
-  development: {
+  /* development: {
     client: 'sqlite3',
     connection: {
       filename: './data/rp-db.db3'
@@ -18,7 +18,7 @@ module.exports = {
         conn.run('PRAGMA foreign_keys = ON', done); //this may be an issue with heroku
       },
     },
-  },
+  }, */
 
   production: {
     client: 'pg',
