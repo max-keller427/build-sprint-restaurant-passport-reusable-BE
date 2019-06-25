@@ -1,6 +1,15 @@
 // Update with your config settings.
 
-const dbConnection = process.env.DATABASE_URL;
+/* const localPg = {
+  host: 'localhost',
+  database: 'safeSpace',
+  user: 'student',
+  password: 'hired'
+};
+ */
+const dbConnection = process.env.DATABASE_URL || 'development';
+
+
 
 module.exports = {
 
@@ -26,11 +35,11 @@ module.exports = {
     migrations: {
       directory: './data/migrations'
     },
-    /* pool: {
+    pool: {
       afterCreate: (conn, done) => {
         conn.run('PRAGMA foreign_keys = ON', done);
       },
-    }, */
+    },
 
   }
 
