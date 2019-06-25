@@ -1,14 +1,13 @@
 // Update with your config settings.
 
-/* const localPg = {
-  host: 'localhost',
+const localPg = {
+  /* host: 'localhost',
   database: 'safeSpace',
   user: 'student',
-  password: 'hired'
+  password: 'hired' */
 };
- */
-const dbConnection = process.env.DATABASE_URL || 'development';
 
+const productionDbConnection = process.env.DATABASE_URL || localPg;
 
 
 module.exports = {
@@ -31,7 +30,7 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: dbConnection,
+    connection: productionDbConnection,
     migrations: {
       directory: './data/migrations'
     },
