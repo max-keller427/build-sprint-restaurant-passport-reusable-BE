@@ -1,5 +1,12 @@
 
-const dbConnnection = process.env.DATABASE_URL;
+const localPg = {
+  host: 'localhost',
+  database: 'hobbits',
+  user: 'student',
+  password: 'hired'
+};
+
+const dbConnnection = process.env.DATABASE_URL || localPg;
 
 module.exports = {
   development: {
