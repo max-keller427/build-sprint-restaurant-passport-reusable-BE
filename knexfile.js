@@ -23,7 +23,7 @@ module.exports = {
     }
   },
 
-  /* testing: {
+  testing: {
     client: 'sqlite3',
     connection: {
       filename: './data/test.db3',
@@ -32,19 +32,16 @@ module.exports = {
     migrations: {
       directory: './data/migrations',
     },
-    seeds: {
-      directory: './data/seeds',
-    },
-  }, */
-
-  production: {
-    client: 'pg',
-    connection: dbConnnection,
-    migrations: {
-      directory: './data/migrations',
-    },
-    seeds: {
-      directory: './data/seeds'
-    }
   },
+
+  /*  production: {
+     client: 'pg',
+     connection: dbConnnection,
+     migrations: {
+       directory: './data/migrations',
+     },
+     seeds: {
+       directory: './data/seeds'
+     }
+   }, */
 };
