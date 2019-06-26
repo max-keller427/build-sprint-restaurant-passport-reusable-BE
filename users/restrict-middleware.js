@@ -14,7 +14,7 @@ function authenticate(req, res, next) {
             if (err) {
                 res.status(401).json({ message: 'Invalid Credentials' });
             } else {
-                request.decodedToken = decodedToken; // may need 'decodedtoken'
+                /*  request.decodedToken = decodedToken; */ // may need 'decodedtoken'
                 next();
             }
         });
