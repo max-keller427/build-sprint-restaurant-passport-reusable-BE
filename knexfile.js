@@ -1,4 +1,15 @@
+const localPg = {
+  host: 'localhost',
+  database: 'safeSpace',
+  user: 'student',
+  password: 'hired'
+};
+
+const dbConnnection = process.env.DATABASE_URL || localPg;
+
 module.exports = {
+
+
   development: {
     client: 'sqlite3',
     connection: {
@@ -27,14 +38,14 @@ module.exports = {
     }
   },
 
-  /*  production: {
-     client: 'pg',
-     connection: dbConnnection,
-     migrations: {
-       directory: './data/migrations',
-     },
-     seeds: {
-       directory: './data/seeds'
-     }
-   }, */
+  production: {
+    client: 'pg',
+    connection: dbConnnection,
+    migrations: {
+      directory: './data/migrations',
+    },
+    seeds: {
+      directory: './data/seeds'
+    }
+  },
 };
