@@ -1,11 +1,13 @@
 require('dotenv').config();
-require('dotenv').config();
 const db = require('../data/dbConfig')
 const supertest = require('supertest')
 const server = require('../api/server')
+const knex = require('knex')
+const config = require('../knexfile.js');
 
 
 
+const environment = process.env.DB_ENV
 const { findBy, findById, addUser, getUsers } = require('./users-model')
 
 
@@ -18,6 +20,10 @@ describe('users model', () => {
     it('should set testing env variable', () => {
         expect(process.env.DB_ENV).toBe('testing');
         console.log(process.env.DB_ENV)
+    });
+
+    it('should have the correct knex config', () => {
+        expect(config[environment].connection.filename).toBe('./data/test.db3')
     });
 
     describe('getUsers()', () => {
@@ -46,31 +52,39 @@ describe('users model', () => {
             expect(user).toHaveLength(1)
         });
 
-        describe('login process', () => {
-            it("should return 200 when user logins in after registering", async () => {
-                const body = { username: 'd', password: 'e', email: 'c' };
-                const logBod = { username: 'd', password: 'e' }
-
-                let res = await supertest(server)
-                    .post("/users")
-                    .send(body);
 
 
-                expect(res.status).toBe(200);
-
-                let login = await supertest(server)
-                    .post('/users/login')
-                    .send(logBod)
-
-                expect(login.status).toBe(200)
-            });
-        })
 
     })
 
+    describe('login process', () => {
+        it("should return 200 when user logins in after registering", async () => {
+            const body = { username: 'd', password: 'e', email: 'c' };
+            const logBod = { username: 'd', password: 'e' }
+
+            let res = await supertest(server)
+                .post("/users")
+                .send(body);
 
 
+            expect(res.status).toBe(200);
 
+            let login = await supertest(server)
+                .post('/users/login')
+                .send(logBod)
+
+            expect(login.status).toBe(200)
+        });
+
+        it('should return a 200 on login ', async () => {
+
+            return supertest(server)
+                .post('/users')
+                .send({ username: 'a', password: 'b', email: 'c' })
+                .expect(200)
+
+        })
+    })
 
 
 })
