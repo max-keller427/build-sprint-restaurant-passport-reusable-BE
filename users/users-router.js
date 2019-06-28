@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
             .status(400)
             .json({ message: 'Submit both username and password when logging in!' });
     }
-    Users.findBy({ username }) // need to define findBy / look for other models
+    Users.findBy({ username })
         .first()
         .then(user => {
             console.log(user)
@@ -67,7 +67,6 @@ function generateToken(user) {
     const payload = {
         subject: user.id,
         username: user.username,
-        /*  roles: ['user'] */ /// need this??????
     }
 
     const options = {
