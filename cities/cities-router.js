@@ -2,22 +2,6 @@ const router = require('express').Router();
 const Cities = require('./cities-model');
 const { authenticate } = require('../users/restrict-middleware')
 
-/* router.post('/', (req, res) => {
-    if (req.body.username && req.body.password && req.body.email) {
-        Users.addUser(req.body)
-            .then(ids => {
-                res.status(200).json(ids)
-            })
-            .catch(error => {
-                res.status(500).json(error)
-            })
-    } else {
-        res.status(422).json({ error: "Please Complete All Forms" })
-    }
-}); */
-
-// !!!!!!!********!*!*!*!*!*!*!*! still have to add restrict middleware to routes!!!!!!
-
 router.get('/', authenticate, (req, res) => { // pull from cities table - get a list of cities 
     Cities.getCities()
         .then(cities => {
@@ -77,11 +61,5 @@ router.get('/restaurants/:id', authenticate, (req, res) => {
             res.status(500).json(error)
         })
 });
-
-//get individual restaurant here !!!!!!!!!!! just use restaurant id, no need for city id
-
-// last endpoint /restaurants/:id - pulls using primary key for restaurants
-
-
 
 module.exports = router;
