@@ -52,9 +52,6 @@ describe('users model', () => {
             expect(user).toHaveLength(1)
         });
 
-
-
-
     })
 
     describe('login process', () => {
