@@ -76,7 +76,7 @@ The shape of the data returned is:
 
 GET/manyToMany:
 
-User_id foreign key, city, restaurant id primary key, and name of a restaurant associated with a particular user. This information comes from the ‘manyToMany’ table, which is a table which holds a primay key and a foreign key for both ‘users’ and restaurants’. This allows us to see which users have visited which particular restaurants.
+User_id foreign key, city, restaurant id primary key, and name of a restaurant associated with a particular user. This information comes from the ‘manyToMany’ table, which is a table which holds a primay key and a foreign key for both ‘users’ and restaurants’. This allows us to see which users have visited which particular restaurants. By using the manyToMany table, one can map through to display restaurants one has been to by matching the user id stored on local storage to the user id in the table. Alternatively, one could “delete” the restaurant from displaying on the passport by filtering through the entries in the table and only displaying those entries who appear an odd number of times.
 
 The deployed endpoint is at: https://rp-backend-web19.herokuapp.com/manyToMany/:id
 

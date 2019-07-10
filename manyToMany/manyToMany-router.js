@@ -3,7 +3,7 @@ const ManyToMany = require('./manyToMany-model');
 const { authenticate } = require('../users/restrict-middleware')
 
 
-router.get('/:id', authenticate, (req, res) => { // pull from cities table - get a list of cities 
+router.get('/:id', authenticate, (req, res) => {
     const { id } = req.params;
     ManyToMany.getManyToMany(id)
         .then(clicked => {
@@ -14,7 +14,7 @@ router.get('/:id', authenticate, (req, res) => { // pull from cities table - get
         });
 });
 
-router.post('/', (req, res) => { // posts to cities
+router.post('/', (req, res) => {
 
     ManyToMany.addManyToMany(req.body)
         .then(ids => {
