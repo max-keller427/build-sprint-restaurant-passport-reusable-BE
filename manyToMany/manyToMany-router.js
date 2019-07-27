@@ -25,4 +25,16 @@ router.post('/', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    /* const { restaurant_id } = req.params */
+    ManyToMany.removeManyToMany(id)
+        .then(count => {
+            res.status(200).json(count)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
+
 module.exports = router

@@ -1,8 +1,8 @@
 const localPg = {
   host: 'localhost',
-  database: 'safeSpace',
-  user: 'student',
-  password: 'hired'
+  database: 'mympy',
+  user: 'user',
+  password: 'labs14'
 };
 
 const dbConnnection = process.env.DATABASE_URL || localPg;
