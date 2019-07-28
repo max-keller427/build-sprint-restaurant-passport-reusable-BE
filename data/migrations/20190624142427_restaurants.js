@@ -9,7 +9,7 @@ exports.up = function (knex, Promise) {
             .unique()
 
         restaurants
-            .string('city', 300)
+            .string('city', 300) // this may be a foreign key to cities name
             .notNullable()
 
         restaurants
@@ -17,7 +17,7 @@ exports.up = function (knex, Promise) {
             .notNullable()
 
         restaurants
-            .string('description', 500)
+            .string('description', 500) // may want to change this to txt instead of varchar
             .notNullable()
 
         restaurants

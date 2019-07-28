@@ -7,6 +7,11 @@ exports.up = function (knex, Promise) {
             .string('name', 300)
             .notNullable()
             .unique()
+
+        cities
+            .string('description', 300)
+
+        //
     })
 
 };
