@@ -19,7 +19,7 @@ _Delpoyed URL:_ [https://build-restaurant-passport.herokuapp.com](https://build-
 
 ```
 {
-    id: integer, do not send this is automatically generated
+	id: integer, do not send this is automatically generated
 	name: string
 }
 ```
@@ -28,11 +28,11 @@ _Delpoyed URL:_ [https://build-restaurant-passport.herokuapp.com](https://build-
 
 ```
 {
-	name: string, required
-    city: string, required
-    address: string, required
-    description: string, required
-    city_id integer, required, references id of city
+    	name: string, required
+    	city: string, required
+    	address: string, required
+   	description: string, required
+    	city_id integer, required, references id of city
 }
 ```
 
