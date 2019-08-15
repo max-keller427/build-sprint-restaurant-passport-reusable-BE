@@ -1,6 +1,6 @@
 # Restaurant Passport
 
-_Delpoyed URL:_ [https://lbs-african-marketplace.herokuapp.com](https://lbs-african-marketplace.herokuapp.com)
+_Delpoyed URL:_ [https://build-restaurant-passport.herokuapp.com](https://build-restaurant-passport.herokuapp.com)
 
 ## Models
 
