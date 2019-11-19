@@ -1,23 +1,23 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const secret = require('../config/secrets')
+const secret = require("../config/secrets");
 
 module.exports = {
-    authenticate
-}
+  authenticate
+};
 
 function authenticate(req, res, next) {
-    const token = req.headers.authorization
+  const token = req.headers.authorization;
 
-    if (token) {
-        jwt.verify(token, secret.jwtSecret, (err, decodeToken) => {
-            if (err) {
-                res.status(401).json({ message: 'Invalid Credentials' });
-            } else {
-                next();
-            }
-        });
-    } else {
-        res.status(401).json({ message: 'No token provided' });
-    }
-};
+  if (token) {
+    jwt.verify(token, secret.jwtSecret, (err, decodeToken) => {
+      if (err) {
+        res.status(401).json({ message: "Invalid Credentials" });
+      } else {
+        next();
+      }
+    });
+  } else {
+    res.status(401).json({ message: "No token provided" });
+  }
+}

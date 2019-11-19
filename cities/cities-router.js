@@ -44,7 +44,11 @@ router.get("/:id/restaurants", authenticate, (req, res) => {
     Cities.getRestaurants(city.id)
       .then(restaurants => {
         console.log(restaurants);
-        res.status(200).json({ id: city.id, name: city.name, restaurants: restaurants });
+        res.status(200).json({
+          id: city.id,
+          name: city.name,
+          restaurants: restaurants
+        });
       })
       .catch(error => {
         res.status(500).json(error);
